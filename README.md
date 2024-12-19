@@ -34,7 +34,7 @@ A full-stack property management system built with Next.js 14, Django, and Postg
 ### Clone
 
 ```bash
-git clone [repository-url]
+git clone (https://github.com/Dadaev-code/property-django-next.git)
 ```
 
 #### Backend
