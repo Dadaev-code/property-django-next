@@ -23,7 +23,6 @@ static/admin/
 static/rest_framework/
 
 # Poetry
-poetry.lock
 dist/
 *.egg-info/
 
