@@ -47,7 +47,8 @@ docker-compose up --build
 #### Seed db
 
 ```bash
-docker exec backend-backend-1 python manage.py seed_properties
+# In a new terminal, once services are running, seed the database:
+docker exec property-backend python manage.py seed_properties
 ```
 
 The backend application will be available at:
