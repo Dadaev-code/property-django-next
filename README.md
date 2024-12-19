@@ -113,5 +113,5 @@ docker-compose up --build
  
 
 ```bash
-python manage.py seed_properties 
+docker-compose exec backend python manage.py seed_properties 
 ```
