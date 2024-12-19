@@ -6,6 +6,7 @@ RUN apt-get update && \
     apt-get install -y \
     netcat-traditional \
     postgresql-client \
+    dos2unix \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Poetry
@@ -25,7 +26,8 @@ COPY . .
 
 # Fix line endings and make entrypoint executable
 COPY entrypoint.sh /entrypoint.sh
-RUN sed -i 's/\r$//' /entrypoint.sh && \
+
+RUN dos2unix /entrypoint.sh && \
     chmod +x /entrypoint.sh
 
 EXPOSE 8000
