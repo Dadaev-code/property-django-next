@@ -40,7 +40,14 @@ git clone (https://github.com/Dadaev-code/property-django-next.git)
 #### Backend
 
 ```bash
+cd backend 
 docker-compose up --build
+```
+
+#### Seed db
+
+```bash
+docker exec backend-backend-1 python manage.py seed_properties
 ```
 
 The backend application will be available at:
