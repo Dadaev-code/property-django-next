@@ -11,27 +11,19 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U propertyuser -d propertydb"]
-      interval: 5s
-      timeout: 5s
-      retries: 5
 
   backend:
-    build: .
+    build: .  
     container_name: property-backend
     ports:
       - "8000:8000"
     volumes:
-      - .:/app
-      - ./media:/app/media
+      - .:/app  
+      - ./media:/app/media   
     depends_on:
-      db:
-        condition: service_healthy
+      - db
     environment:
       - DATABASE_URL=postgresql://propertyuser:propertypass@db:5432/propertydb
-      - DJANGO_SETTINGS_MODULE=property_management.settings
-    command: /entrypoint.sh
 
 volumes:
   postgres_data:

@@ -1,10 +1,9 @@
-# entrypoint.sh
-#!/bin/bash
+#!/bin/sh
 
 # Wait for postgres
 echo "Waiting for postgres..."
-while ! pg_isready -h db -U propertyuser -d propertydb; do
-  sleep 1
+while ! nc -z db 5432; do
+  sleep 0.1
 done
 echo "PostgreSQL started"
 
@@ -13,6 +12,12 @@ echo "Running migrations..."
 python manage.py makemigrations
 python manage.py migrate
 
+# Create superuser
+echo "Creating superuser..."
+DJANGO_SUPERUSER_USERNAME=admin \
+DJANGO_SUPERUSER_EMAIL=admin@example.com \
+DJANGO_SUPERUSER_PASSWORD=password123 \
+python manage.py createsuperuser --noinput
 # Start server
 echo "Starting server..."
-exec python manage.py runserver 0.0.0.0:8000
+python manage.py runserver 0.0.0.0:8000
