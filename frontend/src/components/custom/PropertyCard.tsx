@@ -16,7 +16,7 @@ const PropertyCard = ({ property }: PropertyCardProps) => {
       >
         <div className="relative aspect-video">
           <img
-            src={property.images || "/api/placeholder/400/300"}
+            src={property.images || "/api/placeholder/house.png"}
             alt={property.address}
             className="object-cover w-full h-full"
           />
