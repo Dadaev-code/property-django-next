@@ -56,6 +56,12 @@ The backend application will be available at:
 * Backend: `http://localhost:8000`
 * Admin: `http://localhost:8000/admin`
 
+With a superuser with the following details:
+
+name: admin
+email: admin@example.com
+password: password123 
+
 ## Frontend
 
 1. Install dependencies:
